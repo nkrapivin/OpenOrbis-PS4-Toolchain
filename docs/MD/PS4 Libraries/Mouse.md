@@ -25,7 +25,7 @@ There are also additional macroses used to define mouse parameters and type
 
 `ORBIS_MOUSE_BUTTON_INTERCEPTED` "button" is used to tell if the mouse is being used by the system right now, for example an IME dialog, or quick menu, or any UI dialog that supports mouse.
 
-Ideally you should ignore mouse any input if `ORBIS_MOUSE_BUTTON_INTERCEPTED` is "pressed".
+Ideally you should ignore any mouse input if `ORBIS_MOUSE_BUTTON_INTERCEPTED` is "pressed".
 
 ## Known Structures
 
