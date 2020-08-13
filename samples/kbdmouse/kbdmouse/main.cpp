@@ -126,6 +126,13 @@ int main()
     // Initialize keyboard and mouse libraries.
 
     DEBUGLOG << "Initializing Keyboard...";
+	
+	auto keyboard = new Keyboard();
+	if (!keyboard->Init(-1, 0, ORBIS_KEYBOARD_MAPPING_101))
+	{
+		DEBUGLOG << "Failed to initialize keyboard!";
+		for(;;);
+	}
 
     DEBUGLOG << "Initializing Mouse...";
 
@@ -145,7 +152,7 @@ int main()
         scene->FrameBufferFill(bgColor);
 
         // Draw keyboard state.
-        //drawKeyboardState(keyboard, scene, Font, fgColor, bgColor);
+        drawKeyboardState(keyboard, scene, Font, fgColor, bgColor);
 
         // Draw mouse state.
         drawMouseState(mouse, scene, Font, fgColor, bgColor);
