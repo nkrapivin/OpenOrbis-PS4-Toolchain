@@ -188,3 +188,20 @@
 #define ORBIS_USER_SERVICE_ERROR_NO_EVENT                       0x80960007
 #define ORBIS_USER_SERVICE_ERROR_NOT_LOGGED_IN                  0x80960009
 #define ORBIS_USER_SERVICE_ERROR_BUFFER_TOO_SHORT               0x8096000A
+
+// Mouse library
+#define ORBIS_MOUSE_ERROR_INVALID_ARG                           0x80DF0001
+#define ORBIS_MOUSE_ERROR_INVALID_PORT                          0x80DF0002
+#define ORBIS_MOUSE_ERROR_INVALID_HANDLE                        0x80DF0003
+#define ORBIS_MOUSE_ERROR_ALREADY_OPENED                        0x80DF0004
+#define ORBIS_MOUSE_ERROR_NOT_INITIALIZED                       0x80DF0005
+#define ORBIS_MOUSE_ERROR_DEVICE_NOT_CONNECTED                  0x80DF0007
+#define ORBIS_MOUSE_ERROR_FATAL                                 0x80DF00FF
+
+// Keyboard library
+#define ORBIS_KEYBOARD_ERROR_INVALID_ARG                        0x80DA0001
+#define ORBIS_KEYBOARD_ERROR_INVALID_PORT                       0x80DA0002
+#define ORBIS_KEYBOARD_ERROR_INVALID_HANDLE                     0x80DA0003
+#define ORBIS_KEYBOARD_ERROR_ALREADY_OPENED                     0x80DA0004
+#define ORBIS_KEYBOARD_ERROR_NOT_INITIALIZED                    0x80DA0005
+#define ORBIS_KEYBOARD_ERROR_FATAL                              0x80DA00FF

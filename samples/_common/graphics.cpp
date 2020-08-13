@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
+#include <orbis/Sysmodules.h>
 
 #include <string>
 
@@ -32,7 +33,7 @@ bool Scene2D::Init(size_t memSize, int numFrameBuffers)
 	
 #ifdef GRAPHICS_USES_FONT
 	// Load freetype
-	rc = sceSysmoduleLoadModule(0x009A);
+	rc = sceSysmoduleLoadModule(ORBIS_SYSMODULE_FREETYPE);
 
 	if (rc < 0)
 	{
