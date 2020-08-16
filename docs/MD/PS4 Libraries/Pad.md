@@ -23,12 +23,29 @@ The state of buttons pressed after a poll is stored in an integer. Below is a se
 #define ORBIS_PAD_BUTTON_CROSS        0x4000
 #define ORBIS_PAD_BUTTON_SQUARE       0x8000
 
-#define ORBIS_PAD_BUTTON_TOUCH_PAD
+#define ORBIS_PAD_BUTTON_TOUCH_PAD    0x100000
 ```
 
 It appears the only buttons on the controller not tracked through this state is the share button and the PS button. Presumably these buttons are special and can only be handled directly by internal processes such as Shellcore.
 
 ### Known Structures
+
+#### OrbisPadTouch
+This data structure contains data about one finger.
+
+- **uint16_t x** - X position of the finger. (relative to the screen, not the touchpad)
+- **uint16_t y** - Y position of the finger. (relative to the screen, not the touchpad)
+- **uint8_t id** - Finger ID.
+- **uint8_t reserved[3]** - N/A.
+
+#### OrbisPadTouchData
+This data structure contains data about all fingers currently touching the touchpad.
+
+- **uint8_t length** - Amount of fingers.
+- **uint8_t reserved[3]** - N/A
+- **uint32_t unknown** - N/A
+- **OrbisPadTouch data[ORBIS_PAD_MAX_TOUCH_NUM]** - Array containing finger data.
+
 #### OrbisPadData
 The pad data structure is what the Pad library gives you when you poll for controller state. This includes the button state mentioned earlier, analogue positional data for thumbsticks, the touchpad, and gyro, and other data.
 
@@ -46,7 +63,7 @@ The pad data structure is what the Pad library gives you when you poll for contr
 - **vec_float4 orientation**: Gyroscope orientation as a quaternion
 - **vec_float3 velocity**: Gyroscope velocity
 - **vec_float3 acceleration**: Accelerometer reading
-- **uint8_t touch[24]**: Touchpad data
+- **OrbisPadTouchData touch**: Touchpad data
 - **uint8_t connected**: Whether the controller is on and connected or not
 - **uint64_t timestamp**: Timestamp at time of poll
 - **uint8_t ext[16]**: Extension unit data

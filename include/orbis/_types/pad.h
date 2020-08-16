@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #define ORBIS_PAD_PORT_TYPE_STANDARD 0
+#define ORBIS_PAD_MAX_TOUCH_NUM      2
 
 #define ORBIS_PAD_BUTTON_L3           0x0002
 #define ORBIS_PAD_BUTTON_R3           0x0004
@@ -51,6 +52,21 @@ typedef struct analog
 	uint8_t r2;
 } analog;
 
+// Touch data structs.
+typedef struct OrbisPadTouch {
+	uint16_t  x;
+	uint16_t  y;
+	uint8_t   id;
+	uint8_t   reserved[3];
+} OrbisPadTouch;
+
+typedef struct OrbisPadTouchData {
+	uint8_t       length;
+	uint8_t       reserved[3];
+	uint32_t      reserve1;
+	OrbisPadTouch data[ORBIS_PAD_MAX_TOUCH_NUM];
+} OrbisPadTouchData;
+
 // The ScePadData Structure contains data polled from the DS4 controller. This includes button states, analogue
 // positional data, and touchpad related data.
 typedef struct OrbisPadData {
@@ -62,7 +78,7 @@ typedef struct OrbisPadData {
 	vec_float4 quat;
 	vec_float3 vel;
 	vec_float3 acell;
-	uint8_t touch[24];
+	OrbisPadTouchData touch;
 	uint8_t connected;
 	uint64_t timestamp;
 	uint8_t ext[16];
